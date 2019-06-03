@@ -25,21 +25,24 @@ F
             android:layout_columnSpan="2"
             android:layout_gravity="fill_horizontal"
             android:hint="@string/main_primary_title"
-            android:text="@string/main_primary_title" />
+            android:text="@string/main_primary_title"
+            tools:visibility="gone" />
 
         <Button
             android:id="@+id/main_primary_send1"
-            android:layout_columnWeight="1"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
 
-            android:text="@string/main_primary_send1" />
+            android:text="@string/main_primary_send1"
+            tools:visibility="gone" />
 
         <Button
             android:id="@+id/main_primary_send2"
-            android:layout_columnWeight="1"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
 
-            android:text="@string/main_primary_send2" />
+            android:text="@string/main_primary_send2"
+            tools:visibility="gone" />
 
         <ImageButton
             android:id="@+id/main_primary_config"
@@ -48,8 +51,9 @@ F
             android:layout_columnSpan="2"
             android:layout_gravity="fill_horizontal"
 
+            android:contentDescription="@string/main_primary_config"
             android:src="@android:drawable/ic_menu_preferences"
-            android:contentDescription="@string/main_primary_config" />
+            tools:visibility="gone" />
 
         <Space
             android:layout_width="match_parent"
@@ -68,10 +72,11 @@ F
 
         <Button
             android:id="@+id/main_secondary_send1"
-            android:layout_columnWeight="1"
             android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
 
-            android:text="@string/main_secondary_send1" />
+            android:text="@string/main_secondary_send1"
+            tools:visibility="gone" />
 
         <Button
             android:id="@+id/main_secondary_send2"

@@ -16,14 +16,12 @@
 -->
 
 <resources>
-    <string name="app_name">NotificationChannels</string>
+    <string name="app_name">Salón de la Plástica Mexicana</string>
     <string name="intro_message">
         <![CDATA[
         
             
-Demonstration of using channels to categorize notifications by topic. This feature was added in
-Android O, and allows users to have fine-grained control over their notificatin preferences.
-            
+Demostración del uso de beacons para la notificación de información al usuario por posición geográfica
         
         ]]>
     </string>

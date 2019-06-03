@@ -1,28 +1,31 @@
 <resources>
-    <string name="btn1_description">Start foreground service</string>
-    <string name="btn1_title" >Start</string>
-    <string name="simple_service_title">Simple Service</string>
-    <string name="simple_service_desc">Simple Service from the OTest app</string>
+    <string name="btn1_description">Iniciar servicio</string>
+    <string name="btn1_title" >Iniciar</string>
+    <string name="simple_service_title">Servicio simple</string>
+    <string name="simple_service_desc">Servicio simple para el Museo</string>
 
-    <string name="main_create_noti2_btn">Send</string>
+    <string name="main_create_noti2_btn">Enviar</string>
 
-    <string name="btnA_title">Go to Settings</string>
-    <string name="noti_channel_default">Primary Channel</string>
-    <string name="noti1_title">Notification 1 Title</string>
-    <string name="primary1_body">The content</string>
-    <string name="noti2_title">Second notification</string>
-    <string name="secondary1_body">Notification body text.</string>
-    <string name="noti_channel_second">Secondary Channel</string>
+    <string name="btnA_title">Ajustes</string>
+    <string name="noti_channel_default">Canal primario</string>
+    <string name="noti1_title">Título notificación</string>
+    <string name="primary1_body">Contenido</string>
+    <string name="noti2_title">Segunda notificación</string>
+    <string name="secondary1_body">Texto de la segunda notificación.</string>
+    <string name="noti_channel_second">Canal Secundario</string>
 
-    <string name="main_primary_title">Primary Channel</string>
-    <string name="main_primary_send1">Send 1</string>
-    <string name="main_primary_send2">Send 2</string>
-    <string name="main_primary_config">Go to primary settings</string>
+    <string name="main_primary_title">Canal Primario</string>
+    <string name="main_primary_send1">Enviar 1</string>
+    <string name="main_primary_send2">Enviar 2</string>
+    <string name="main_primary_config">Ir a ajustes primarios</string>
 
-    <string name="main_secondary_title">Secondary Channel</string>
-    <string name="main_secondary_send1">Send 1</string>
-    <string name="main_secondary_send2">Send 2</string>
-    <string name="main_secondary_config">Go to secondary settings</string>
-    <string name="primary2_body">Second Notification for Primary Channel</string>
-    <string name="secondary2_body">Second Notification for Secondary Channel</string>
+    <string name="main_secondary_title">Salón de dibujo y estampa</string>
+    <string name="main_secondary_send1">Enviar 1</string>
+    <string name="main_secondary_send2">Probar notificación</string>
+    <string name="main_secondary_config">Ir a ajustes secundarios</string>
+    <string name="primary2_body">Segunda notificación del canal primario</string>
+    <string name="secondary2_body">Segunda notificación del canal secundario</string>
+
+    <string name="descartar">Descartar</string>
+    <string name="visitar">Visitar</string>
 </resources>

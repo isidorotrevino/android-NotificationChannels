@@ -19,9 +19,16 @@ package com.example.android.notificationchannels;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
+
+import java.util.Random;
 
 /**
  * Helper class to manage notification channels, and create notifications.
@@ -50,6 +57,13 @@ class NotificationHelper extends ContextWrapper {
         chan2.setLightColor(Color.BLUE);
         chan2.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         getManager().createNotificationChannel(chan2);
+
+            /*
+        ActionReceiver receiver = new ActionReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("descartar");
+        filter.addCategory(Intent.CATEGORY_DEFAULT);
+        this.registerReceiver(receiver,filter);*/
     }
 
     /**
@@ -78,11 +92,46 @@ class NotificationHelper extends ContextWrapper {
      * @return A Notification.Builder configured with the selected channel and details
      */
     public Notification.Builder getNotification2(String title, String body) {
-        return new Notification.Builder(getApplicationContext(), SECONDARY_CHANNEL)
+        Notification.Builder notification =
+                new Notification.Builder(getApplicationContext(), SECONDARY_CHANNEL)
                  .setContentTitle(title)
-                 .setContentText(body)
+                 //.setContentText(body)
                  .setSmallIcon(getSmallIcon())
+                .setStyle(new Notification.BigPictureStyle()
+                    .bigPicture(BitmapFactory.decodeResource(getResources(),getBigImage())))
                  .setAutoCancel(true);
+
+
+
+/*
+        Intent intent =new Intent(this,ActionReceiver.class);
+        intent.setAction("descartar");
+        intent.putExtra("action","descartar");
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        PendingIntent intentDescartar=PendingIntent.getBroadcast(this,1002,
+                intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                //PendingIntent.getActivity(this,1001,
+                //intent,PendingIntentFlags.CancelCurrent);
+*/
+
+        int notificationId = new Random().nextInt(); // just use a counter in some util class...
+        PendingIntent dismissIntent = ActionReceiver.getDismissIntent(notificationId, this);
+
+
+
+        Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.salondelaplasticamexicana.bellasartes.gob.mx/"));
+        intent2.putExtra("action","aplicar");
+        PendingIntent intentAplicar= PendingIntent.getActivity(this,0,
+                intent2,PendingIntent.FLAG_CANCEL_CURRENT);
+
+        notification = notification.setContentIntent(intentAplicar);
+        //notification = notification.addAction(android.R.drawable.ic_input_delete,"Descartar",intentDescartar);
+        notification = notification.addAction(android.R.drawable.ic_input_delete,"Descartar",dismissIntent);
+        notification = notification.addAction(android.R.drawable.btn_star,"Ver más",intentAplicar);
+
+
+
+        return notification;
     }
 
     /**
@@ -101,7 +150,12 @@ class NotificationHelper extends ContextWrapper {
      * @return The small icon resource id
      */
     private int getSmallIcon() {
+
         return android.R.drawable.stat_notify_chat;
+    }
+
+    private int getBigImage(){
+        return R.drawable.salon_imagen_2;
     }
 
     /**
