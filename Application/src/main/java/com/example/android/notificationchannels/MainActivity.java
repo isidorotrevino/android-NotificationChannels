@@ -141,12 +141,13 @@ public class MainActivity extends Activity implements BeaconConsumer {
     public void onBeaconServiceConnect() {
         //Monitoreo
         beaconManager.removeAllMonitorNotifiers();
+        final MainActivity act = this;
         beaconManager.addMonitorNotifier(new MonitorNotifier() {
             @Override
             public void didEnterRegion(Region region) {
                 Log.i(TAG, "I just saw an beacon for the first time!");
 
-                
+                sendNotification(NOTI_SECONDARY2,"");
 
             }
 
@@ -158,6 +159,9 @@ public class MainActivity extends Activity implements BeaconConsumer {
             @Override
             public void didDetermineStateForRegion(int state, Region region) {
                 Log.i(TAG, "I have just switched from seeing/not seeing beacons: " + state);
+                if(state == MonitorNotifier.INSIDE){
+                    sendNotification(NOTI_SECONDARY2,"");
+                }
             }
         });
 
@@ -214,7 +218,7 @@ public class MainActivity extends Activity implements BeaconConsumer {
             return "";
         }
 
-        private String getTitleSecondaryText() {
+        public String getTitleSecondaryText() {
             if (titlePrimary != null) {
                 return titleSecondary.getText().toString();
             }

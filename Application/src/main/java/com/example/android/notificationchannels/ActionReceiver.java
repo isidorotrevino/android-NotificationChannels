@@ -51,6 +51,9 @@ public class ActionReceiver extends Activity {
 
         Toast.makeText(this.getApplicationContext(),"Descartando notificación",Toast.LENGTH_SHORT).show();
 
+        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
+
         finish(); // since finish() is called in onCreate(), onDestroy() will be called immediately
 
 
@@ -60,7 +63,11 @@ public class ActionReceiver extends Activity {
         Intent intent = new Intent(context, ActionReceiver.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra(NOTIFICATION_ID, notificationId);
-        PendingIntent dismissIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent dismissIntent = PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
         return dismissIntent;
     }
 }

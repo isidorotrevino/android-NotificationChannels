@@ -92,6 +92,8 @@ class NotificationHelper extends ContextWrapper {
      * @return A Notification.Builder configured with the selected channel and details
      */
     public Notification.Builder getNotification2(String title, String body) {
+
+
         Notification.Builder notification =
                 new Notification.Builder(getApplicationContext(), SECONDARY_CHANNEL)
                  .setContentTitle(title)
@@ -100,7 +102,6 @@ class NotificationHelper extends ContextWrapper {
                 .setStyle(new Notification.BigPictureStyle()
                     .bigPicture(BitmapFactory.decodeResource(getResources(),getBigImage())))
                  .setAutoCancel(true);
-
 
 
 /*
@@ -121,6 +122,8 @@ class NotificationHelper extends ContextWrapper {
 
         Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.salondelaplasticamexicana.bellasartes.gob.mx/"));
         intent2.putExtra("action","aplicar");
+        intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent intentAplicar= PendingIntent.getActivity(this,0,
                 intent2,PendingIntent.FLAG_CANCEL_CURRENT);
 
